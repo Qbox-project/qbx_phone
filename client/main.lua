@@ -1784,7 +1784,7 @@ RegisterNetEvent('qb-phone:client:GetCalled', function(CallerNumber, CallId, Ano
 end)
 
 RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, SenderNumber, New)
-    local NumberKey = GetKeyByNumber(SenderNumber)
+    local NumberKey = GetKeyByNumber(tostring(SenderNumber))
 
     if New then
         PhoneData.Chats[#PhoneData.Chats+1] = {
