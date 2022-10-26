@@ -115,7 +115,7 @@ local function GetKeyByNumber(Number)
     local retval = nil
     if PhoneData.Chats then
         for k, v in pairs(PhoneData.Chats) do
-            if v.number == Number then
+            if v.number == tostring(Number) then
                 retval = k
             end
         end
@@ -1784,7 +1784,7 @@ RegisterNetEvent('qb-phone:client:GetCalled', function(CallerNumber, CallId, Ano
 end)
 
 RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, SenderNumber, New)
-    local NumberKey = GetKeyByNumber(tostring(SenderNumber))
+    local NumberKey = GetKeyByNumber(SenderNumber)
 
     if New then
         PhoneData.Chats[#PhoneData.Chats+1] = {
