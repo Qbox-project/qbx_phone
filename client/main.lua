@@ -115,7 +115,7 @@ local function GetKeyByNumber(Number)
     local retval = nil
     if PhoneData.Chats then
         for k, v in pairs(PhoneData.Chats) do
-            if v.number == Number then
+            if v.number == tostring(Number) then
                 retval = k
             end
         end
