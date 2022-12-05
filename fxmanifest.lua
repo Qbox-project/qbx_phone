@@ -10,6 +10,7 @@ shared_scripts {
     'config.lua',
     '@qb-apartments/config.lua',
     '@qb-garages/config.lua',
+    '@ox_lib/init.lua'
 }
 
 client_scripts {
