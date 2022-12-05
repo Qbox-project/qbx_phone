@@ -488,7 +488,7 @@ QBCore.Functions.CreateCallback('qb-phone:server:ScanPlate', function(source, cb
         end
         cb(vehicleData)
     else
-        TriggerClientEvent('QBCore:Notify', src, 'No Vehicle Nearby', 'error')
+        TriggerClientEvent('ox_lib:notify', src, { description = 'No Vehicle Nearby', type = 'error' })
         cb(nil)
     end
 end)
@@ -857,7 +857,7 @@ RegisterNetEvent('qb-phone:server:TransferMoney', function(iban, amount)
             sender.Functions.RemoveMoney('bank', amount, "phone-transfered")
         end
     else
-        TriggerClientEvent('QBCore:Notify', src, "This account number doesn't exist!", "error")
+        TriggerClientEvent('ox_lib:notify', src, { description = 'This account number doesn\'t exist!', type = 'error'})
     end
 end)
 
@@ -1033,7 +1033,7 @@ end)
 RegisterNetEvent('qb-phone:server:sendPing', function(data)
     local src = source
     if src == data then
-        TriggerClientEvent("QBCore:Notify", src, "You cannot ping yourself", "error")
+        TriggerClientEvent('ox_lib:notify', src, { description = 'You cannot ping yourself', type = 'error' })
     end
 end)
 
@@ -1065,18 +1065,18 @@ QBCore.Commands.Add('bill', 'Bill A Player', {{name = 'id', help = 'Player ID'},
                         {billed.PlayerData.citizenid, amount, biller.PlayerData.job.name,
                          biller.PlayerData.charinfo.firstname, biller.PlayerData.citizenid})
                     TriggerClientEvent('qb-phone:RefreshPhone', billed.PlayerData.source)
-                    TriggerClientEvent('QBCore:Notify', source, 'Invoice Successfully Sent', 'success')
-                    TriggerClientEvent('QBCore:Notify', billed.PlayerData.source, 'New Invoice Received')
+                    TriggerClientEvent('ox_lib:notify', source, { description = 'Invoice Successfully Sent', type = 'success' })
+                    TriggerClientEvent('ox_lib:notify', billed.PlayerData.source, { description = 'New Invoice Received', type = 'success' })
                 else
-                    TriggerClientEvent('QBCore:Notify', source, 'Must Be A Valid Amount Above 0', 'error')
+                    TriggerClientEvent('ox_lib:notify', source, { description = 'Must Be A Valid Amount Above 0', type = 'error' })
                 end
             else
-                TriggerClientEvent('QBCore:Notify', source, 'You Cannot Bill Yourself', 'error')
+                TriggerClientEvent('ox_lib:notify', source, { description = 'You Cannot Bill Yourself', type = 'error' })
             end
         else
-            TriggerClientEvent('QBCore:Notify', source, 'Player Not Online', 'error')
+            TriggerClientEvent('ox_lib:notify', source, { description = 'Player Not Online', type = 'error' })
         end
     else
-        TriggerClientEvent('QBCore:Notify', source, 'No Access', 'error')
+        TriggerClientEvent('ox_lib:notify', source, { description = 'No Access', type = 'error' })
     end
 end)
