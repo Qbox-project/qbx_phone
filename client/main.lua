@@ -1,4 +1,4 @@
-local QBCore = exports['qb-core']:GetCoreObject()
+local QBCore = exports['qbx-core']:GetCoreObject()
 local PlayerJob = {}
 local patt = "[?!@#]"
 local frontCam = false
@@ -1031,7 +1031,7 @@ RegisterNUICallback('HasCreatedRace', function(_, cb)
 end)
 
 RegisterNUICallback('IsInRace', function(_, cb)
-    local InRace = exports['qb-lapraces']:IsInRace()
+    local InRace = exports['qbx-lapraces']:IsInRace()
     cb(InRace)
 end)
 
@@ -1040,7 +1040,7 @@ RegisterNUICallback('IsAuthorizedToCreateRaces', function(data, cb)
         function(IsAuthorized, NameAvailable)
             data = {
                 IsAuthorized = IsAuthorized,
-                IsBusy = exports['qb-lapraces']:IsInEditor(),
+                IsBusy = exports['qbx-lapraces']:IsInEditor(),
                 IsNameAvailable = NameAvailable,
             }
             cb(data)
@@ -1083,9 +1083,9 @@ end)
 
 RegisterNUICallback('IsBusyCheck', function(data, cb)
     if data.check == "editor" then
-        cb(exports['qb-lapraces']:IsInEditor())
+        cb(exports['qbx-lapraces']:IsInEditor())
     else
-        cb(exports['qb-lapraces']:IsInRace())
+        cb(exports['qbx-lapraces']:IsInRace())
     end
 end)
 
