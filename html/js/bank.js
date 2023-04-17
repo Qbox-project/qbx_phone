@@ -101,7 +101,7 @@ $(document).on('click', '#accept-transfer', function(e){
     var amountData = $(".bank-app-account-balance").data('balance');
 
     if (iban != "" && amount != "") {
-            $.post('https://qb-phone/CanTransferMoney', JSON.stringify({
+            $.post('https://qbx-phone/CanTransferMoney', JSON.stringify({
                 sendTo: iban,
                 amountOf: amount,
             }), function(data){
@@ -139,7 +139,7 @@ $(document).on('click', '.pay-invoice', function(event){
     var BankBalance = $(".bank-app-account-balance").data('balance');
 
     if (BankBalance >= InvoiceData.amount) {
-        $.post('https://qb-phone/PayInvoice', JSON.stringify({
+        $.post('https://qbx-phone/PayInvoice', JSON.stringify({
             sender: InvoiceData.sender,
             amount: InvoiceData.amount,
             society: InvoiceData.society,
@@ -173,7 +173,7 @@ $(document).on('click', '.decline-invoice', function(event){
     var InvoiceId = $(this).parent().parent().attr('id');
     var InvoiceData = $("#"+InvoiceId).data('invoicedata');
 
-    $.post('https://qb-phone/DeclineInvoice', JSON.stringify({
+    $.post('https://qbx-phone/DeclineInvoice', JSON.stringify({
         sender: InvoiceData.sender,
         amount: InvoiceData.amount,
         society: InvoiceData.society,
