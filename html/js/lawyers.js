@@ -150,7 +150,7 @@ $(document).on('click', '.lawyer-list-call', function(e){
         name: LawyerData.name
     }
 
-    $.post('https://qb-phone/CallContact', JSON.stringify({
+    $.post('https://qbx-phone/CallContact', JSON.stringify({
         ContactData: cData,
         Anonymous: QB.Phone.Data.AnonymousCall,
     }), function(status){

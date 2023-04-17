@@ -18,7 +18,7 @@ $(document).on('click', '.garage-vehicle', function(e){
 
 $(document).on('click', '#track-vehicle', function(e){
     e.preventDefault()
-    $.post("https://qb-phone/track-vehicle", JSON.stringify({
+    $.post("https://qbx-phone/track-vehicle", JSON.stringify({
         veh: veh,
     }));
 });
