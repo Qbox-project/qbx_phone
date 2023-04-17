@@ -197,12 +197,12 @@ $(document).on('click', '.confirm-search-person-test', function(e){
                     $("#person-"+i).data("PersonData", person);
                 });
             } else {
-                QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+                QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "There are no search results!");
                 $(".person-search-results").html("");
             }
         });
     } else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+        QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "There are no search results!");
         $(".person-search-results").html("");
     }
 });
@@ -223,12 +223,12 @@ $(document).on('click', '.confirm-search-person-house', function(e){
                     $("#personhouse-"+i).data("HouseData", house);
                 });
             } else {
-                QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+                QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "There are no search results!");
                 $(".person-search-results").html("");
             }
         });
     } else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+        QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "There are no search results!");
         $(".person-search-results").html("");
     }
 });
@@ -259,7 +259,7 @@ $(document).on('click', '.confirm-search-vehicle', function(e){
             }
         });
     } else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no search results!");
+        QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "There are no search results!");
         $(".vehicle-search-results").html("");
     }
 });
@@ -281,7 +281,7 @@ $(document).on('click', '.scan-search-vehicle', function(e){
             var VehicleElement = '<div class="vehicle-search-result"> <div class="vehicle-search-result-name">'+vehicle.label+'</div> <div class="vehicle-search-result-plate">License Plate: '+vehicle.plate+'</div> <div class="vehicle-opensplit"></div> &nbsp; <div class="vehicle-search-result-owner">Owner: '+vehicle.owner+'</div> &nbsp; <div class="vehicle-search-result-apk">MOT: '+APK+'</div> <div class="vehicle-search-result-warrant">Signaled: '+Flagged+'</div> </div>'
             $(".vehicle-search-results").append(VehicleElement);
         } else {
-            QB.Phone.Notifications.Add("politie", "MDT", "No vehicle nearby!");
+            QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "No vehicle nearby!");
             $(".vehicle-search-results").append("");
         }
     });
@@ -315,10 +315,10 @@ $(document).on('click', '.meos-recent-alert', function(e){
                 alert: alertData,
             }));
         } else {
-            QB.Phone.Notifications.Add("politie", "MDT", "This alert doesn't have a GPS location!");
+            QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "This alert doesn't have a GPS location!");
         }
     }else {
-        QB.Phone.Notifications.Add("politie", "MDT", "There are no alerts available.");
+        QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "There are no alerts available.");
     }
 });
 
@@ -333,5 +333,5 @@ $(document).on('click', '.meos-location-button', function(e){
 $(document).on('click', '.meos-clear-alerts', function(e){
     $(".meos-alerts").html("");
     $(".meos-recent-alerts").html('<div class="meos-recent-alert"> <span class="meos-recent-alert-title">You don\'t have any alerts!</span></div>');
-    QB.Phone.Notifications.Add("politie", "MDT", "All alerts have been deleted!");
+    QB.Phone.Notifications.Add("fa-solid fa-handcuffs", "MDT", "All alerts have been deleted!");
 });
