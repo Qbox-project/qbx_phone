@@ -8,8 +8,8 @@ ui_page 'html/index.html'
 
 shared_scripts {
     'config.lua',
-    '@qb-apartments/config.lua',
-    '@qb-garages/config.lua',
+    '@qbx-apartments/config.lua',
+    '@qbx-garages/config.lua',
     '@ox_lib/init.lua'
 }
 
