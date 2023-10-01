@@ -1,4 +1,4 @@
-local QBCore = exports['qbx-core']:GetCoreObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 local PlayerJob = {}
 local patt = "[?!@#]"
 local frontCam = false
@@ -847,7 +847,7 @@ end)
 
 RegisterNUICallback('GetTruckerData', function(_, cb)
     local TruckerMeta = QBCore.Functions.GetPlayerData().metadata["jobrep"]["trucker"]
-    local TierData = exports['qb-trucker']:GetTier(TruckerMeta)
+    local TierData = exports.qbx_trucker:GetTier(TruckerMeta)
     cb(TierData)
 end)
 
@@ -1031,7 +1031,7 @@ RegisterNUICallback('HasCreatedRace', function(_, cb)
 end)
 
 RegisterNUICallback('IsInRace', function(_, cb)
-    local InRace = exports['qbx-lapraces']:IsInRace()
+    local InRace = exports.qbx_lapraces:IsInRace()
     cb(InRace)
 end)
 
@@ -1040,7 +1040,7 @@ RegisterNUICallback('IsAuthorizedToCreateRaces', function(data, cb)
         function(IsAuthorized, NameAvailable)
             data = {
                 IsAuthorized = IsAuthorized,
-                IsBusy = exports['qbx-lapraces']:IsInEditor(),
+                IsBusy = exports['qbx_lapraces']:IsInEditor(),
                 IsNameAvailable = NameAvailable,
             }
             cb(data)
@@ -1083,9 +1083,9 @@ end)
 
 RegisterNUICallback('IsBusyCheck', function(data, cb)
     if data.check == "editor" then
-        cb(exports['qbx-lapraces']:IsInEditor())
+        cb(exports.qbx_lapraces:IsInEditor())
     else
-        cb(exports['qbx-lapraces']:IsInRace())
+        cb(exports.qbx_lapraces:IsInRace())
     end
 end)
 

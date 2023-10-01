@@ -7,10 +7,11 @@ version '1.0.0'
 ui_page 'html/index.html'
 
 shared_scripts {
+    '@ox_lib/init.lua',
+    '@qbx_core/import.lua',
     'config.lua',
-    '@qbx-apartments/config.lua',
-    '@qbx-garages/config.lua',
-    '@ox_lib/init.lua'
+    '@qbx_apartments/config.lua',
+    '@qbx_garages/config.lua',
 }
 
 client_scripts {
@@ -30,6 +31,11 @@ files {
     'html/css/*.css',
     'html/img/backgrounds/*.png',
     'html/img/apps/*.png',
+}
+
+modules {
+    'qbx_core:playerdata',
+    'qbx_core:utils',
 }
 
 lua54 'yes'
