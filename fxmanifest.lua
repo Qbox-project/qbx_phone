@@ -10,7 +10,6 @@ shared_scripts {
     '@ox_lib/init.lua',
     '@qbx_core/modules/utils.lua',
     'config.lua',
-    '@qbx_apartments/config.lua',
 }
 
 client_scripts {

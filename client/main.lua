@@ -1,3 +1,4 @@
+local apartmentConfig = require '@qbx_apartments.config.shared'
 local VEHICLES = exports.qbx_core:GetVehiclesByName()
 local PlayerJob = {}
 local patt = "[?!@#]"
@@ -1120,7 +1121,7 @@ end)
 
 RegisterNUICallback('SetApartmentLocation', function(data, cb)
     local ApartmentData = data.data.appartmentdata
-    local TypeData = Apartments.Locations[ApartmentData.type]
+    local TypeData = apartmentConfig.locations[ApartmentData.type]
     SetNewWaypoint(TypeData.coords.enter.x, TypeData.coords.enter.y)
     lib.notify({ description = 'GPS has been set!', type = 'success' })
     cb("ok")
