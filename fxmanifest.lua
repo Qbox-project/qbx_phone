@@ -8,13 +8,13 @@ ui_page 'html/index.html'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    '@qbx_core/import.lua',
+    '@qbx_core/modules/utils.lua',
     'config.lua',
     '@qbx_apartments/config.lua',
-    '@qbx_garages/config.lua',
 }
 
 client_scripts {
+    '@qbx_core/modules/playerdata.lua',
     'client/main.lua',
     'client/animation.lua'
 }
@@ -33,9 +33,5 @@ files {
     'html/img/apps/*.png',
 }
 
-modules {
-    'qbx_core:playerdata',
-    'qbx_core:utils',
-}
-
 lua54 'yes'
+use_experimental_fxv2_oal 'yes'
