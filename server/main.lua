@@ -499,9 +499,9 @@ lib.callback.register('qb-phone:server:HasPhone', function(source)
     if Player ~= nil then
         local HasPhone = Player.Functions.GetItemByName("phone")
         if HasPhone ~= nil then
-            cb(true)
+            return true
         else
-            cb(false)
+            return false
         end
     end
 end)
@@ -560,10 +560,10 @@ end)
 
 lib.callback.register('qb-phone:server:GetWebhook', function()
     if WebHook ~= "" then
-		cb(WebHook)
+		return WebHook
 	else
 		print('Set your webhook to ensure that your camera will work!!!!!! Set this on line 10 of the server sided script!!!!!')
-		cb(nil)
+		return nil
 	end
 end)
 

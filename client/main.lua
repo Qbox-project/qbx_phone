@@ -1054,12 +1054,12 @@ RegisterNUICallback('RaceDistanceCheck', function(data, cb)
         if data.Joined then
             TriggerEvent('qb-lapraces:client:WaitingDistanceCheck')
         end
-        return true
+        cb(true)
     else
         lib.notify({ description = 'You\'re too far away from the race. GPS has been set to the race.',
             type = 'error' })
         SetNewWaypoint(checkpointcoords.x, checkpointcoords.y)
-        return false
+        cb(false)
     end
 end)
 
