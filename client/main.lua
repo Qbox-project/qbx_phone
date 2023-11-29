@@ -176,7 +176,7 @@ local function LoadPhone()
 
     PlayerJob = QBX.PlayerData.job
     PhoneData.PlayerData = QBX.PlayerData
-    local PhoneMeta = QBX.PlayerData.metadata.phone
+    local PhoneMeta = PhoneData.PlayerData.metadata["phone"]
     PhoneData.MetaData = PhoneMeta
 
     if pData.InstalledApps ~= nil and next(pData.InstalledApps) ~= nil then
@@ -1127,7 +1127,7 @@ RegisterNUICallback('SetApartmentLocation', function(data, cb)
 end)
 
 RegisterNUICallback('GetCurrentLawyers', function(_, cb)
-    local lawyers = lib.callback.await('qb-phone:server:GetCurrentLawyers', false, data.input)
+    local lawyers = lib.callback.await('qb-phone:server:GetCurrentLawyers', false)
     cb(lawyers)
 end)
 
