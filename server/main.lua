@@ -34,14 +34,6 @@ local function escape_sqli(source)
     return source:gsub("['\"]", replacements)
 end
 
-local function round(num, numDecimalPlaces)
-    if numDecimalPlaces and numDecimalPlaces > 0 then
-        local mult = 10 ^ numDecimalPlaces
-        return math.floor(num * mult + 0.5) / mult
-    end
-    return math.floor(num + 0.5)
-end
-
 function QBPhone.AddMentionedTweet(citizenid, TweetData)
     if MentionedTweets[citizenid] == nil then
         MentionedTweets[citizenid] = {}
@@ -264,7 +256,7 @@ lib.callback.register('qb-phone:server:PayInvoice', function(source, society, am
     local SenderPly = exports.qbx_core:GetPlayerByCitizenId(sendercitizenid)
     local invoiceMailData = {}
     if SenderPly and Config.BillingCommissions[society] then
-        local commission = round(amount * Config.BillingCommissions[society])
+        local commission = math.round(amount * Config.BillingCommissions[society])
         SenderPly.Functions.AddMoney('bank', commission)
         invoiceMailData = {
             sender = 'Billing Department',
@@ -852,7 +844,7 @@ RegisterNetEvent('qb-phone:server:TransferMoney', function(iban, amount)
             end
         else
             local moneyInfo = json.decode(result[1].money)
-            moneyInfo.bank = round((moneyInfo.bank + amount))
+            moneyInfo.bank = math.round((moneyInfo.bank + amount))
             MySQL.update('UPDATE players SET money = ? WHERE citizenid = ?',
                 {json.encode(moneyInfo), result[1].citizenid})
             sender.Functions.RemoveMoney('bank', amount, "phone-transfered")

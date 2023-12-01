@@ -30,19 +30,6 @@ PhoneData = {
 
 -- Functions
 
-function string:split(delimiter)
-    local result = {}
-    local from = 1
-    local delim_from, delim_to = string.find(self, delimiter, from)
-    while delim_from do
-        result[#result + 1] = string.sub(self, from, delim_from - 1)
-        from = delim_to + 1
-        delim_from, delim_to = string.find(self, delimiter, from)
-    end
-    result[#result + 1] = string.sub(self, from)
-    return result
-end
-
 local function escape_str(s)
     return s
 end
@@ -76,25 +63,6 @@ local function CalculateTimeToDisplay()
     obj.minute = minute
 
     return obj
-end
-
-local function GetClosestPlayer()
-    local closestPlayers = GetPlayersFromCoords()
-    local closestDistance = -1
-    local closestPlayer = -1
-    local coords = GetEntityCoords(cache.ped)
-    for i = 1, #closestPlayers, 1 do
-        if closestPlayers[i] ~= PlayerId() then
-            local pos = GetEntityCoords(GetPlayerPed(closestPlayers[i]))
-            local distance = #(pos - coords)
-
-            if closestDistance == -1 or closestDistance > distance then
-                closestPlayer = closestPlayers[i]
-                closestDistance = distance
-            end
-        end
-    end
-    return closestPlayer, closestDistance
 end
 
 local function GetKeyByDate(Number, Date)
@@ -266,7 +234,7 @@ local function LoadPhone()
         PlayerData = PhoneData.PlayerData,
         PlayerJob = PhoneData.PlayerData.job,
         applications = Config.PhoneApplications,
-        PlayerId = GetPlayerServerId(PlayerId())
+        PlayerId = GetPlayerServerId(cache.playerId)
     })
 end
 
